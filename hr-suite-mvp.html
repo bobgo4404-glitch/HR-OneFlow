@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>인사 통합관리 시스템 | 통합 인사 운영 시범판</title>
+    <link rel="stylesheet" href="./src/styles/app.css" />
+  </head>
+  <body>
+    <div id="authRoot"></div>
+
+    <div class="app" id="appShell">
+      <aside class="sidebar">
+        <section class="brand">
+          <h1>인사 통합관리 시스템</h1>
+          <p>채용부터 퇴직까지 전 인사 라이프사이클을 이벤트 중심으로 연결하는 통합 인사 운영 시범판</p>
+        </section>
+        <section class="scope-card">
+          <h2>현재 운영 범위</h2>
+          <div class="scope-grid" id="scopeCard"></div>
+        </section>
+        <nav class="nav" id="navMenu"></nav>
+      </aside>
+
+      <main class="surface">
+        <header class="topbar">
+          <section class="hero">
+            <h2 id="pageTitle">대시보드</h2>
+            <p id="pageDescription">중소·중견기업 인사 담당자가 실제 운영할 수 있도록 정책, 승인, 마감, 예외 처리를 연결한 단일 파일 시범판입니다.</p>
+          </section>
+          <section class="top-actions">
+            <button class="button-secondary" id="userSwitchButton">사용자: HR 관리자</button>
+            <button class="button-secondary" id="entitySwitchButton">법인: 본사</button>
+            <button class="button-secondary" id="siteSwitchButton">사업장: 서울</button>
+            <button class="button" id="primaryActionButton">신규 등록</button>
+          </section>
+        </header>
+        <section class="content" id="appContent"></section>
+      </main>
+    </div>
+
+    <div id="modalRoot" class="hidden"></div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics-compat.js"></script>
+    <script src="./src/app.bundle.js"></script>
+  </body>
+</html>
