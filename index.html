@@ -3,48 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>인사 통합관리 시스템 | 통합 인사 운영 시범판</title>
+    <title>HR OneFlow | 인사 운영 시스템</title>
     <link rel="stylesheet" href="./app.css" />
   </head>
   <body>
     <div id="authRoot"></div>
 
-    <div class="app" id="appShell">
+    <div class="app-shell hidden" id="appShell">
       <aside class="sidebar">
         <section class="brand">
-          <h1>인사 통합관리 시스템</h1>
-          <p>채용부터 퇴직까지 전 인사 라이프사이클을 이벤트 중심으로 연결하는 통합 인사 운영 시범판</p>
+          <strong>HR OneFlow</strong>
+          <span>인사 운영 시스템</span>
         </section>
-        <section class="scope-card">
-          <h2>현재 운영 범위</h2>
-          <div class="scope-grid" id="scopeCard"></div>
-        </section>
-        <nav class="nav" id="navMenu"></nav>
+
+        <nav class="nav" id="navMenu" aria-label="주 메뉴"></nav>
       </aside>
 
-      <main class="surface">
+      <main class="main">
         <header class="topbar">
-          <section class="hero">
-            <h2 id="pageTitle">대시보드</h2>
-            <p id="pageDescription">중소·중견기업 인사 담당자가 실제 운영할 수 있도록 정책, 승인, 마감, 예외 처리를 연결한 단일 파일 시범판입니다.</p>
-          </section>
-          <section class="top-actions">
-            <button class="button-secondary" id="userSwitchButton">사용자: HR 관리자</button>
-            <button class="button-secondary" id="entitySwitchButton">법인: 본사</button>
-            <button class="button-secondary" id="siteSwitchButton">사업장: 서울</button>
-            <button class="button" id="primaryActionButton">신규 등록</button>
-          </section>
+          <div class="page-heading">
+            <span class="breadcrumb" id="pageBreadcrumb">대시보드</span>
+            <h1 id="pageTitle">대시보드</h1>
+            <p id="pageDescription">오늘 처리해야 할 인사 운영 현황을 확인합니다.</p>
+          </div>
+          <div class="top-actions">
+            <button type="button" class="button ghost" id="userMenuButton">사용자</button>
+            <button type="button" class="button ghost" id="exportButton">내보내기</button>
+            <button type="button" class="button primary" id="primaryActionButton">등록</button>
+          </div>
         </header>
+
+        <section class="tabbar" id="tabBar"></section>
         <section class="content" id="appContent"></section>
       </main>
     </div>
 
-    <div id="modalRoot" class="hidden"></div>
+    <div class="modal-root hidden" id="modalRoot"></div>
+    <div class="toast-root" id="toastRoot"></div>
 
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <script src="./app.bundle.js"></script>
   </body>
 </html>

@@ -1,0 +1,83 @@
+{
+  "rules": {
+    "hrOperations": {
+      "live": {
+        ".read": "auth != null && auth.token.email == 'jiwon2@yujintechnology.com'",
+        ".write": "auth != null && (!data.child('meta').exists() || auth.token.email == 'jiwon2@yujintechnology.com' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '시스템 관리자')",
+        "meta": {
+          ".read": "auth != null",
+          ".write": "auth != null && (auth.token.email == 'jiwon2@yujintechnology.com' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '시스템 관리자')"
+        },
+        "profiles": {
+          ".read": "auth != null && (auth.token.email == 'jiwon2@yujintechnology.com' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '시스템 관리자' || !data.exists())",
+          "$uid": {
+            ".read": "auth != null && ($uid == auth.uid || auth.token.email == 'jiwon2@yujintechnology.com' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '시스템 관리자')",
+            ".write": "auth != null && (auth.token.email == 'jiwon2@yujintechnology.com' || (!root.child('hrOperations/live/profiles').exists() && $uid == auth.uid) || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '시스템 관리자' || (!data.exists() && $uid == auth.uid))"
+          }
+        },
+        "employees": {
+          ".read": "auth != null",
+          ".write": "auth != null && (root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '시스템 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == 'HR 관리자')"
+        },
+        "orgs": {
+          ".read": "auth != null",
+          ".write": "auth != null && (root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '시스템 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == 'HR 관리자')"
+        },
+        "reviews": {
+          ".read": "auth != null",
+          ".write": "auth != null && (root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '시스템 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == 'HR 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '평가 담당자')"
+        },
+        "compensationPlans": {
+          ".read": "auth != null",
+          ".write": "auth != null && (root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '시스템 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == 'HR 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '평가 담당자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '보상 담당자')"
+        },
+        "compensationItems": {
+          ".read": "auth != null && (root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '시스템 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == 'HR 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '보상 담당자')",
+          ".write": "auth != null && (root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '시스템 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == 'HR 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '보상 담당자')"
+        },
+        "certificates": {
+          ".read": "auth != null",
+          "requests": {
+            "$requestId": {
+              ".write": "auth != null && (root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '시스템 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == 'HR 관리자')"
+            }
+          },
+          "templates": {
+            ".write": "auth != null && (root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '시스템 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == 'HR 관리자')"
+          },
+          "templateVersions": {
+            ".write": "auth != null && (root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '?쒖뒪??愿由ъ옄' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == 'HR 愿由ъ옄')"
+          },
+          "issued": {
+            ".write": "auth != null && (root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '시스템 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == 'HR 관리자')"
+          }
+        },
+        "salaryBasics": {
+          ".read": "auth != null && (root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '시스템 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == 'HR 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '보상 담당자')",
+          ".write": "auth != null && (root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '시스템 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '보상 담당자')"
+        },
+        "salaryHistory": {
+          ".read": "auth != null && (root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '시스템 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == 'HR 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '보상 담당자')",
+          ".write": "auth != null && (root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '시스템 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '보상 담당자')"
+        },
+        "auditLogs": {
+          ".read": "auth != null && (root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '시스템 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == 'HR 관리자')",
+          ".write": "auth != null"
+        },
+        "settings": {
+          ".read": "auth != null",
+          ".write": "auth != null && root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '시스템 관리자'",
+          "reviewCriteria": {
+            ".write": "auth != null && (root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '시스템 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == 'HR 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '평가 담당자')"
+          },
+          "reviewGrades": {
+            ".write": "auth != null && (root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '시스템 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == 'HR 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '평가 담당자')"
+          },
+          "compensationRules": {
+            ".write": "auth != null && (root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '시스템 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == 'HR 관리자' || root.child('hrOperations/live/profiles').child(auth.uid).child('role').val() == '보상 담당자')"
+          }
+        }
+      }
+    }
+  }
+}
